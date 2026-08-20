@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DigiShield AI | Digital Security & Technology</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #050912;
+            --bg2: #080f1c;
+            --card: rgba(255,255,255,0.045);
+            --border: rgba(255,255,255,0.09);
+
+            --cyan: #00c8ff;
+            --cyan2: #42ddff;
+
+            --text: #f4f8fc;
+            --muted: #8d9aaa;
+
+            --green: #38f5a1;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+
+            background: var(--bg);
+
+            color: var(--text);
+
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -2;
+
+            background:
+                linear-gradient(
+                    rgba(0,200,255,0.025) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(0,200,255,0.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
+        }
+
+        body::after {
+            content: "";
+
+            position: fixed;
+
+            width: 600px;
+            height: 600px;
+
+            top: -300px;
+            right: -200px;
+
+            background: rgba(0,200,255,0.08);
+
+            filter: blur(130px);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: -1;
+        }
+
+
+        /* ================================
+           NAVBAR
+        ================================= */
+
+        nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 76px;
+
+            padding: 0 7%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background: rgba(5,9,18,0.82);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.07);
+
+            z-index: 999;
+        }
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .brand-logo {
+            width: 43px;
+            height: 43px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 12px;
+
+            border:
+                1px solid rgba(0,200,255,0.6);
+
+            color: var(--cyan);
+
+            font-family: "Orbitron";
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            box-shadow:
+                0 0 25px rgba(0,200,255,0.15);
+        }
+
+        .brand-name {
+            font-family: "Orbitron";
+
+            font-weight: 700;
+
+            font-size: 18px;
+
+            letter-spacing: 1px;
+        }
+
+        .brand-name span {
+            color: var(--cyan);
+        }
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+
+            color: var(--muted);
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            transition: 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .menu {
+            display: none;
+
+            font-size: 24px;
+
+            cursor: pointer;
+
+            color: var(--cyan);
+        }
+
+
+        /* ================================
+           HERO
+        ================================= */
+
+        .hero {
+            min-height: 100vh;
+
+            padding:
+                150px 7% 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 720px;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+        .status {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            padding:
+                9px 15px;
+
+            border-radius: 50px;
+
+            background:
+                rgba(0,200,255,0.06);
+
+            border:
+                1px solid rgba(0,200,255,0.25);
+
+            color: #8ae5ff;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            letter-spacing: 0.5px;
+
+            margin-bottom: 25px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+
+            border-radius: 50%;
+
+            background: var(--green);
+
+            box-shadow:
+                0 0 12px var(--green);
+        }
+
+        .hero h1 {
+            font-family: "Orbitron";
+
+            font-size:
+                clamp(42px, 6vw, 76px);
+
+            line-height: 1.05;
+
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: var(--cyan);
+
+            text-shadow:
+                0 0 35px rgba(0,200,255,0.2);
+        }
+
+        .hero p {
+            color: var(--muted);
+
+            max-width: 650px;
+
+            font-size: 17px;
+
+            line-height: 1.8;
+        }
+
+
+        /* ================================
+           TEACHABLE MACHINE BUTTON
+        ================================= */
+
+        .model-button {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            margin-top: 30px;
+
+            padding: 14px 24px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #007ea8,
+                    #00c8ff
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            letter-spacing: 0.3px;
+
+            border:
+                1px solid rgba(66,221,255,0.45);
+
+            box-shadow:
+                0 0 25px rgba(0,200,255,0.15);
+
+            transition:
+                0.25s ease;
+        }
+
+        .model-button i {
+            font-size: 15px;
+        }
+
+        .model-button:hover {
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 0 35px rgba(0,200,255,0.3);
+        }
+
+
+        /* ================================
+           HERO TERMINAL
+        ================================= */
+
+        .hero-visual {
+            position: absolute;
+
+            right: 7%;
+
+            width: 440px;
+            height: 390px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+        }
+
+        .terminal {
+            width: 370px;
+
+            background:
+                rgba(5,15,27,0.9);
+
+            border:
+                1px solid rgba(0,200,255,0.25);
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 0 60px rgba(0,200,255,0.08),
+                inset 0 0 40px rgba(0,200,255,0.025);
+
+            overflow: hidden;
+
+            transform:
+                perspective(900px)
+                rotateY(-7deg)
+                rotateX(3deg);
+
+            animation:
+                terminalFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes terminalFloat {
+
+            0%,100% {
+                transform:
+                    perspective(900px)
+                    rotateY(-7deg)
+                    rotateX(3deg)
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    perspective(900px)
+                    rotateY(-7deg)
+                    rotateX(3deg)
+                    translateY(-10px);
+            }
+
+        }
+
+        .terminal-top {
+            height: 43px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 15px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.07);
+        }
+
+        .window-buttons {
+            display: flex;
+
+            gap: 6px;
+        }
+
+        .window-buttons span {
+            width: 8px;
+            height: 8px;
+
+            border-radius: 50%;
+
+            background: #385061;
+        }
+
+        .window-title {
+            color: #60798b;
+
+            font-family: "Orbitron";
+
+            font-size: 9px;
+
+            letter-spacing: 1px;
+        }
+
+        .terminal-body {
+            padding: 25px;
+        }
+
+        .security-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 20px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 18px;
+
+            background:
+                rgba(0,200,255,0.06);
+
+            border:
+                1px solid rgba(0,200,255,0.25);
+
+            box-shadow:
+                0 0 30px rgba(0,200,255,0.1);
+
+            color: var(--cyan);
+
+            font-size: 29px;
+        }
+
+        .terminal-title {
+            text-align: center;
+
+            font-family: "Orbitron";
+
+            font-size: 15px;
+
+            margin-bottom: 7px;
+        }
+
+        .terminal-subtitle {
+            text-align: center;
+
+            color: #657889;
+
+            font-size: 11px;
+
+            margin-bottom: 23px;
+        }
+
+        .scan-line {
+            height: 1px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    var(--cyan),
+                    transparent
+                );
+
+            margin-bottom: 20px;
+
+            animation:
+                scan 3s ease-in-out infinite;
+        }
+
+        @keyframes scan {
+
+            0%,100% {
+                opacity: .2;
+
+                transform: scaleX(.5);
+            }
+
+            50% {
+                opacity: 1;
+
+                transform: scaleX(1);
+            }
+
+        }
+
+        .terminal-row {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 10px 0;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.045);
+        }
+
+        .terminal-row:last-child {
+            border-bottom: none;
+        }
+
+        .row-name {
+            color: #8396a5;
+
+            font-size: 11px;
+        }
+
+        .row-value {
+            font-size: 10px;
+
+            color: var(--green);
+
+            font-weight: 600;
+        }
+
+        .row-value.blue {
+            color: var(--cyan);
+        }
+
+
+        /* ================================
+           SECTIONS
+        ================================= */
+
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+
+            max-width: 780px;
+
+            margin:
+                0 auto 55px;
+        }
+
+        .label {
+            color: var(--cyan);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 12px;
+        }
+
+        .section-title h2 {
+            font-family: "Orbitron";
+
+            font-size:
+                clamp(30px, 4vw, 45px);
+
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--muted);
+
+            line-height: 1.8;
+
+            font-size: 15px;
+        }
+
+
+        /* ================================
+           SERVICE CARDS
+        ================================= */
+
+        .areas {
+            background:
+                rgba(0,0,0,0.12);
+        }
+
+        .area-grid {
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+        .area-card {
+            padding: 35px;
+
+            border-radius: 22px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            transition: 0.3s;
+        }
+
+        .area-card:hover {
+            transform: translateY(-7px);
+
+            border-color:
+                rgba(0,200,255,0.4);
+
+            background:
+                rgba(0,200,255,0.045);
+        }
+
+        .area-icon {
+            width: 58px;
+            height: 58px;
+
+            display: grid;
+
+            place-items: center;
+
+            border-radius: 15px;
+
+            background:
+                rgba(0,200,255,0.055);
+
+            border:
+                1px solid rgba(0,200,255,0.22);
+
+            margin-bottom: 22px;
+
+            color: var(--cyan);
+
+            font-size: 23px;
+
+            transition: 0.25s;
+        }
+
+        .area-card:hover .area-icon {
+            background:
+                rgba(0,200,255,0.1);
+
+            box-shadow:
+                0 0 20px rgba(0,200,255,0.12);
+        }
+
+        .area-card h3 {
+            font-size: 22px;
+
+            margin-bottom: 13px;
+        }
+
+        .area-card p {
+            color: var(--muted);
+
+            line-height: 1.8;
+
+            font-size: 14px;
+
+            margin-bottom: 22px;
+        }
+
+        .area-list {
+            list-style: none;
+
+            margin-bottom: 22px;
+        }
+
+        .area-list li {
+            color: #a9b5c4;
+
+            font-size: 13px;
+
+            margin-bottom: 11px;
+
+            position: relative;
+
+            padding-left: 23px;
+        }
+
+        .area-list li i {
+            position: absolute;
+
+            left: 0;
+
+            top: 2px;
+
+            color: var(--cyan);
+
+            font-size: 12px;
+        }
+
+        .card-description {
+            color: #718292;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+
+            padding-top: 18px;
+
+            border-top:
+                1px solid rgba(255,255,255,0.06);
+        }
+
+
+        /* ================================
+           TOPIC CARDS
+        ================================= */
+
+        .topic-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 17px;
+
+            max-width: 1150px;
+
+            margin: auto;
+        }
+
+        .topic {
+            padding: 27px;
+
+            border-radius: 17px;
+
+            background:
+                var(--card);
+
+            border:
+                1px solid var(--border);
+
+            transition: 0.25s;
+        }
+
+        .topic:hover {
+            transform:
+                translateY(-6px);
+
+            border-color:
+                rgba(0,200,255,0.4);
+        }
+
+        .topic-icon {
+            width: 46px;
+            height: 46px;
+
+            margin-bottom: 17px;
+
+            border-radius: 12px;
+
+            border:
+                1px solid rgba(0,200,255,0.2);
+
+            background:
+                rgba(0,200,255,0.045);
+
+            display: grid;
+
+            place-items: center;
+
+            color: var(--cyan);
+
+            font-size: 18px;
+
+            transition: 0.25s;
+        }
+
+        .topic:hover .topic-icon {
+            background:
+                rgba(0,200,255,0.1);
+
+            box-shadow:
+                0 0 18px rgba(0,200,255,0.1);
+        }
+
+        .topic h3 {
+            margin-bottom: 9px;
+
+            font-size: 17px;
+        }
+
+        .topic p {
+            color: var(--muted);
+
+            line-height: 1.7;
+
+            font-size: 13px;
+
+            margin-bottom: 12px;
+        }
+
+        .topic-more {
+            color: #5f7d8e;
+
+            font-size: 11px;
+
+            line-height: 1.6;
+        }
+
+
+        /* ================================
+           TECHNOLOGY
+        ================================= */
+
+        .tech {
+            background:
+                rgba(0,0,0,0.12);
+        }
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        footer {
+            padding:
+                35px 7%;
+
+            border-top:
+                1px solid rgba(255,255,255,0.07);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            color: #697688;
+
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: white;
+
+            font-family: "Orbitron";
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media(max-width: 1050px) {
+
+            .hero-visual {
+                right: -70px;
+
+                opacity: .35;
+            }
+
+            .topic-grid {
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+        }
+
+        @media(max-width: 750px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .nav-links {
+
+                position: absolute;
+
+                top: 76px;
+
+                left: 0;
+
+                width: 100%;
+
+                padding: 25px;
+
+                background:
+                    #070d17;
+
+                display: none;
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                border-bottom:
+                    1px solid rgba(255,255,255,0.08);
+            }
+
+            .nav-links.show {
+                display: flex;
+            }
+
+            .hero {
+                padding:
+                    140px 5% 80px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            section {
+                padding:
+                    80px 5%;
+            }
+
+            .area-grid,
+            .topic-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .area-card {
+                padding: 28px;
+            }
+
+            footer {
+                flex-direction: column;
+
+                gap: 14px;
+
+                text-align: center;
+            }
+
+        }
+
+        @media(max-width: 500px) {
+
+            .model-button {
+
+                width: 100%;
+
+                justify-content: center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         NAVBAR
+    ================================= -->
+
+    <nav>
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                DS
+            </div>
+
+            <div class="brand-name">
+                DIGI<span>SHIELD</span> AI
+            </div>
+
+        </div>
+
+
+        <div
+            class="nav-links"
+            id="navLinks"
+        >
+
+            <a href="#home">
+                Home
+            </a>
+
+            <a href="#areas">
+                Services
+            </a>
+
+            <a href="#security">
+                Cybersecurity
+            </a>
+
+            <a href="#technology">
+                Tech Help
+            </a>
+
+        </div>
+
+
+        <div
+            class="menu"
+            onclick="toggleMenu()"
+        >
+
+            <i class="fa-solid fa-bars"></i>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- ================================
+         HERO
+    ================================= -->
+
+    <section
+        class="hero"
+        id="home"
+    >
+
+        <div class="hero-content">
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                DIGITAL SECURITY & TECHNOLOGY ASSISTANT
+
+            </div>
+
+
+            <h1>
+
+                Protect Your<br>
+
+                <span>Digital World.</span>
+
+            </h1>
+
+
+            <p>
+
+                DigiShield AI is designed to make technology
+                easier and safer. Explore cybersecurity awareness,
+                learn how common digital threats work, and find
+                practical solutions to everyday computer problems.
+
+            </p>
+
+
+            <a
+                class="model-button"
+                href="https://teachablemachine.withgoogle.com/models/DkG3ney52/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <i class="fa-solid fa-camera"></i>
+
+                Teachable Machine
+
+            </a>
+
+        </div>
+
+
+
+        <!-- TERMINAL -->
+
+        <div class="hero-visual">
+
+            <div class="terminal">
+
+                <div class="terminal-top">
+
+                    <div class="window-buttons">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                    <div class="window-title">
+                        DIGISHIELD // SYSTEM
+                    </div>
+
+                </div>
+
+
+                <div class="terminal-body">
+
+                    <div class="security-icon">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                    </div>
+
+
+                    <div class="terminal-title">
+                        SECURITY SYSTEM
+                    </div>
+
+                    <div class="terminal-subtitle">
+                        DIGITAL ENVIRONMENT MONITOR
+                    </div>
+
+
+                    <div class="scan-line"></div>
+
+
+                    <div class="terminal-row">
+
+                        <span class="row-name">
+                            SECURITY STATUS
+                        </span>
+
+                        <span class="row-value">
+                            ACTIVE
+                        </span>
+
+                    </div>
+
+
+                    <div class="terminal-row">
+
+                        <span class="row-name">
+                            THREAT MONITOR
+                        </span>
+
+                        <span class="row-value">
+                            RUNNING
+                        </span>
+
+                    </div>
+
+
+                    <div class="terminal-row">
+
+                        <span class="row-name">
+                            NETWORK
+                        </span>
+
+                        <span class="row-value blue">
+                            PROTECTED
+                        </span>
+
+                    </div>
+
+
+                    <div class="terminal-row">
+
+                        <span class="row-name">
+                            AI ASSISTANT
+                        </span>
+
+                        <span class="row-value">
+                            READY
+                        </span>
+
+                    </div>
+
+
+                    <div class="terminal-row">
+
+                        <span class="row-name">
+                            SYSTEM
+                        </span>
+
+                        <span class="row-value">
+                            ONLINE
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================
+         SERVICES
+    ================================= -->
+
+    <section
+        class="areas"
+        id="areas"
+    >
+
+        <div class="section-title">
+
+            <div class="label">
+                What We Do
+            </div>
+
+            <h2>
+                One Platform. Two Missions.
+            </h2>
+
+            <p>
+
+                DigiShield AI combines cybersecurity awareness
+                with practical computer troubleshooting so users
+                can learn about digital safety while getting help
+                with everyday technology problems.
+
+            </p>
+
+        </div>
+
+
+        <div class="area-grid">
+
+
+            <!-- CYBERSECURITY -->
+
+            <div class="area-card">
+
+                <div class="area-icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+
+                <h3>
+                    Cybersecurity Awareness
+                </h3>
+
+
+                <p>
+
+                    Learn how to recognize and respond to common
+                    online threats. The goal is not just to tell
+                    you that something is dangerous, but to help
+                    you understand <strong>why</strong> it is dangerous
+                    and what safer actions you can take.
+
+                </p>
+
+
+                <ul class="area-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Identify phishing emails and suspicious links
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Build stronger password and account habits
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Understand malware and ransomware
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Recognize common online scams
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Improve privacy and safe browsing habits
+                    </li>
+
+                </ul>
+
+
+                <div class="card-description">
+
+                    Learn the warning signs behind suspicious
+                    messages, websites, downloads and requests
+                    for personal information.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- TECH HELP -->
+
+            <div class="area-card">
+
+                <div class="area-icon">
+
+                    <i class="fa-solid fa-computer"></i>
+
+                </div>
+
+
+                <h3>
+                    Computer & Technology Helpdesk
+                </h3>
+
+
+                <p>
+
+                    Get straightforward troubleshooting guidance
+                    for common computer and technology problems.
+                    Instead of using complicated technical language,
+                    solutions are explained step-by-step.
+
+                </p>
+
+
+                <ul class="area-list">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Diagnose Wi-Fi and internet problems
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Troubleshoot slow computer performance
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Fix Bluetooth and device connections
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Troubleshoot printers and peripherals
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Handle common software and system issues
+                    </li>
+
+                </ul>
+
+
+                <div class="card-description">
+
+                    Start with simple checks, identify the likely
+                    cause of the problem, and then work through
+                    safe troubleshooting steps.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================
+         CYBERSECURITY
+    ================================= -->
+
+    <section id="security">
+
+        <div class="section-title">
+
+            <div class="label">
+                Cybersecurity Awareness
+            </div>
+
+            <h2>
+                Understand The Threats
+            </h2>
+
+            <p>
+
+                Cybersecurity is more than antivirus software.
+                Everyday decisions such as clicking links,
+                choosing passwords and sharing information can
+                have a major impact on your digital security.
+
+            </p>
+
+        </div>
+
+
+        <div class="topic-grid">
+
+
+            <!-- PHISHING -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-fish"></i>
+                </div>
+
+                <h3>
+                    Phishing
+                </h3>
+
+                <p>
+
+                    Phishing attacks use fake emails, messages
+                    or websites to trick people into revealing
+                    passwords, financial information or other
+                    sensitive data.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Look for unusual senders, urgent requests,
+                    suspicious links and unexpected attachments.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PASSWORD -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+
+                <h3>
+                    Password Security
+                </h3>
+
+                <p>
+
+                    Weak or reused passwords can allow attackers
+                    to gain access to multiple accounts if one
+                    password is compromised.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Use unique passwords and enable
+                    multi-factor authentication where possible.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MALWARE -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-bug"></i>
+                </div>
+
+                <h3>
+                    Malware
+                </h3>
+
+                <p>
+
+                    Malware is malicious software that can damage
+                    systems, steal information, monitor activity
+                    or disrupt normal computer operation.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Avoid unknown downloads and keep operating
+                    systems and security software updated.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SCAMS -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <h3>
+                    Online Scams
+                </h3>
+
+                <p>
+
+                    Scammers often create fake offers,
+                    fake support messages and fake websites
+                    to convince people to send money or information.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Be especially careful with unexpected
+                    requests for payments or personal details.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SOCIAL ENGINEERING -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+
+                <h3>
+                    Social Engineering
+                </h3>
+
+                <p>
+
+                    Social engineering attacks target people
+                    rather than directly attacking technology.
+                    Attackers use trust, fear or urgency to
+                    manipulate victims.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Verify unusual requests before sharing
+                    information or taking action.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SAFE BROWSING -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+
+                <h3>
+                    Safe Browsing
+                </h3>
+
+                <p>
+
+                    Websites and downloads can contain
+                    malicious content or misleading information.
+                    Safe browsing reduces the chance of
+                    accidentally interacting with threats.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Check website addresses and avoid suspicious
+                    downloads and pop-ups.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ACCOUNT SECURITY -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <h3>
+                    Account Security
+                </h3>
+
+                <p>
+
+                    Protect important accounts using strong
+                    authentication methods and secure recovery
+                    options.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Enable MFA and review account security
+                    settings regularly.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PRIVACY -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-user-secret"></i>
+                </div>
+
+                <h3>
+                    Privacy
+                </h3>
+
+                <p>
+
+                    Personal information shared online can
+                    sometimes be collected, misused or combined
+                    with other information.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Share only what is necessary and review
+                    privacy settings on important services.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BACKUPS -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-hard-drive"></i>
+                </div>
+
+                <h3>
+                    Backups
+                </h3>
+
+                <p>
+
+                    Backups provide another copy of important
+                    files if a device fails, files are accidentally
+                    deleted or malware affects the system.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Keep important files backed up using a
+                    reliable storage method.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================
+         TECHNOLOGY
+    ================================= -->
+
+    <section
+        class="tech"
+        id="technology"
+    >
+
+        <div class="section-title">
+
+            <div class="label">
+                Technology Helpdesk
+            </div>
+
+            <h2>
+                Fix Your Technology
+            </h2>
+
+            <p>
+
+                Many computer problems have simple causes.
+                Understanding basic troubleshooting can help
+                identify the problem before more complicated
+                solutions are needed.
+
+            </p>
+
+        </div>
+
+
+        <div class="topic-grid">
+
+
+            <!-- WIFI -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-wifi"></i>
+                </div>
+
+                <h3>
+                    Wi-Fi & Internet
+                </h3>
+
+                <p>
+
+                    Troubleshoot slow or disconnected internet,
+                    Wi-Fi connection failures and devices that
+                    cannot access the network.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Check the connection, restart networking
+                    equipment and verify network settings.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SLOW COMPUTER -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-gauge-high"></i>
+                </div>
+
+                <h3>
+                    Slow Computer
+                </h3>
+
+                <p>
+
+                    Slow performance can be caused by too many
+                    background applications, limited storage,
+                    outdated software or insufficient resources.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Check startup programs, available storage
+                    and running applications.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- BLUETOOTH -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-brands fa-bluetooth-b"></i>
+                </div>
+
+                <h3>
+                    Bluetooth
+                </h3>
+
+                <p>
+
+                    Bluetooth devices may fail to connect because
+                    of pairing issues, disabled settings,
+                    interference or outdated drivers.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Check Bluetooth settings and remove and
+                    re-pair the device when necessary.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PRINTER -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-print"></i>
+                </div>
+
+                <h3>
+                    Printers
+                </h3>
+
+                <p>
+
+                    Printer problems can involve connection
+                    issues, incorrect printer selection,
+                    driver problems or stuck print jobs.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Check the connection, printer status,
+                    queue and selected printer.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- STORAGE -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+
+                <h3>
+                    Storage
+                </h3>
+
+                <p>
+
+                    Running out of storage can slow a device
+                    and prevent applications or updates from
+                    working correctly.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Identify large files and unnecessary
+                    applications before removing anything.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SOFTWARE -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <h3>
+                    Software Problems
+                </h3>
+
+                <p>
+
+                    Applications may freeze, crash or refuse
+                    to open because of corrupted files,
+                    outdated versions or system conflicts.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Restart the application, check updates
+                    and investigate error messages.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AUDIO -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-volume-high"></i>
+                </div>
+
+                <h3>
+                    Audio Problems
+                </h3>
+
+                <p>
+
+                    Missing or distorted audio can be caused
+                    by incorrect output devices, muted settings,
+                    drivers or connected peripherals.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Check volume, output device and connection
+                    settings first.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- KEYBOARD -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-keyboard"></i>
+                </div>
+
+                <h3>
+                    Keyboard & Mouse
+                </h3>
+
+                <p>
+
+                    Input devices may stop working because of
+                    batteries, cables, Bluetooth pairing,
+                    USB connections or driver issues.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Try another port or reconnect the device
+                    before changing advanced settings.
+
+                </div>
+
+            </div>
+
+
+
+            <!-- OVERHEATING -->
+
+            <div class="topic">
+
+                <div class="topic-icon">
+                    <i class="fa-solid fa-temperature-high"></i>
+                </div>
+
+                <h3>
+                    Overheating
+                </h3>
+
+                <p>
+
+                    Excessive heat can reduce performance and
+                    potentially damage hardware if the problem
+                    continues.
+
+                </p>
+
+                <div class="topic-more">
+
+                    Keep vents clear, use the device on a hard
+                    surface and avoid blocking airflow.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================================
+         FOOTER
+    ================================= -->
+
+    <footer>
+
+        <strong>
+            DIGISHIELD AI
+        </strong>
+
+        <span>
+            Cybersecurity • Technology • AI
+        </span>
+
+        <span>
+            © 2026 DigiShield AI
+        </span>
+
+    </footer>
+
+
+
+    <!-- ================================
+         BOTPRESS CHATBOT
+    ================================= -->
+
+    <script src="https://cdn.botpress.cloud/webchat/v3.7/inject.js"></script>
+
+    <script
+        src="https://files.bpcontent.cloud/2026/08/20/14/20260820143424-NFJ2IM45.js"
+        defer>
+    </script>
+
+
+
+    <!-- ================================
+         MOBILE MENU
+    ================================= -->
+
+    <script>
+
+        function toggleMenu() {
+
+            const nav =
+                document.getElementById("navLinks");
+
+            nav.classList.toggle("show");
+
+        }
+
+
+        document
+            .querySelectorAll(".nav-links a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    document
+                        .getElementById("navLinks")
+                        .classList
+                        .remove("show");
+
+                });
+
+            });
+
+    </script>
+
+
+</body>
+
+</html>
